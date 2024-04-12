@@ -25,15 +25,15 @@ public class BallMovement : MonoBehaviour
         StartCoroutine(Launch());
     }
 
-    private void ServeBall()
+    public void SetupBall()
     {
         rb.velocity = new Vector2(0, 0);
-        transform.position = new Vector2(0, 0);
+        transform.position = new Vector2(0, -2);
     }
 
     public IEnumerator Launch()
     {
-        ServeBall();
+        SetupBall();
         yield return new WaitForSeconds(1);
         MoveBall(new Vector2(0, -1));
 

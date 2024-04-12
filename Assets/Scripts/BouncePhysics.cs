@@ -6,6 +6,7 @@ public class BouncePhysics : MonoBehaviour
 {
     public GameObject hitSFX;
     public BallMovement ballMovement;
+    public BrickManager brickManager;
 
     private Rigidbody2D rb;
 
@@ -22,9 +23,27 @@ public class BouncePhysics : MonoBehaviour
 
         float positionY = 1;
 
-        float positionX = (ballPosition.x - racketPosition.x) / racketHeight * 7;
+        float positionX = (ballPosition.x - racketPosition.x) / racketHeight * 2;
 
         ballMovement.MoveBall(new Vector2(positionX, positionY), true);
+    }
+
+    private void BrickBounce(Collision2D collision)
+    {
+        Vector3 ballPosition = transform.position;
+        Vector3 brickPosition = collision.transform.position;
+
+        float xDiff = ballPosition.x - brickPosition.x;
+        float yDiff = ballPosition.y - brickPosition.y;
+
+        if (xDiff > yDiff)
+        {
+            ballMovement.WallBounce(1);
+        }
+        else
+        {
+            ballMovement.WallBounce(0);
+        }
     }
 
     private void TopWallBounce()
@@ -56,6 +75,11 @@ public class BouncePhysics : MonoBehaviour
         else if (collision.gameObject.name == "TopBorder")
         {
             TopWallBounce();
+        }
+        else if (collision.gameObject.name == "Brick(Clone)")
+        {
+            BrickBounce(collision);
+            brickManager.RemoveBrick(collision.gameObject);
         }
 
         Instantiate(hitSFX, transform.position, transform.rotation);

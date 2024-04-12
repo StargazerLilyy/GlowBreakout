@@ -283,6 +283,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1853118500}
+  - {fileID: 1984761852}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
@@ -609,7 +610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520a3757a8b6c3d41928969befc07b31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  racketSpeed: 10
+  racketSpeed: 8
 --- !u!1 &944333918
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,6 +1011,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1253264916}
   - component: {fileID: 1253264917}
+  - component: {fileID: 1253264918}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -1045,6 +1047,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   pauseMenu: {fileID: 1281337239}
+--- !u!114 &1253264918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1253264914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c6b5100e72de0d84e9e492dfdd9bfcc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currrentLevel: 1
+  brickPrefab: {fileID: 5137824716419281100, guid: bb2b5dc37d4ad3e419c32e1457952999, type: 3}
+  ballMovement: {fileID: 1625903380}
 --- !u!1001 &1281337237
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1346,7 +1363,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb486cce755aae04fa2bb5d64b5d4af1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 7.5
+  speed: 6
 --- !u!58 &1625903381
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1443,7 +1460,7 @@ Transform:
   m_GameObject: {fileID: 1625903379}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1463,6 +1480,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitSFX: {fileID: 1366006320692733986, guid: 967798d8b90a3e84cac5f5c5b8031806, type: 3}
   ballMovement: {fileID: 1625903380}
+  brickManager: {fileID: 1253264918}
 --- !u!50 &1625903385
 Rigidbody2D:
   serializedVersion: 4
@@ -1600,12 +1618,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1984761849}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 459908066}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
@@ -1618,4 +1636,3 @@ SceneRoots:
   - {fileID: 1351573568}
   - {fileID: 1496438148}
   - {fileID: 459908066}
-  - {fileID: 1984761852}
