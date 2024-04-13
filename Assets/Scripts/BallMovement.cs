@@ -6,9 +6,8 @@ using UnityEngine;
 public class BallMovement : MonoBehaviour
 {
     public float speed;
-
+    public BrickManager brickManager;
     private Rigidbody2D rb;
-
     private Vector2 curVelocity;
 
     //Get Functions
@@ -34,7 +33,7 @@ public class BallMovement : MonoBehaviour
     public IEnumerator Launch()
     {
         SetupBall();
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(3);
         MoveBall(new Vector2(0, -1));
 
     }
@@ -43,9 +42,12 @@ public class BallMovement : MonoBehaviour
     {
         direction = direction.normalized;
 
-        float rand = UnityEngine.Random.Range(-2f, 2f);
+        float rand = UnityEngine.Random.Range(-.5f, .5f);
+
+        float brickMulti = brickManager.startingBricks > 0 ? -1.3f * (brickManager.startingBricks - brickManager.brickCount) / brickManager.startingBricks : 0;
 
         float ballSpeed = randVelocity ? rand + speed : speed;
+        ballSpeed = brickMulti + ballSpeed;
 
         rb.velocity = direction * ballSpeed;
         UpdateVelocity();
